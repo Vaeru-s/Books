@@ -7,14 +7,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BaseAdminController extends AbstractController
 { 
-     /**
-       * @Route("/admin", name="admin")
-      */
 
-        public function index()
+        public function renderDefault()
         {
-             return $this->render('admin/baseadmin.html.twig', [
-            'title' => 'Главная страница',
-        ]);
+
+                return [
+                        'title' => 'Значение по умолчанию',
+                ];
         }
 }

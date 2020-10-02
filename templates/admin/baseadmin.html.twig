@@ -1,8 +1,11 @@
 {% extends '/base.html.twig' %}
 {% block body %}
+    
+    <div class="navbar bg-dark">
 
-    <h1>
-        {{ title }}
-    </h1>
-
+        <a href="/admin" class="nav-link" >Главная</a>
+        <a href="/admin/users" class="nav-link" >Пользователи</a>
+        <a href="/admin/addUser" class="nav-link" >Добавить пользователя</a>
+        <a href="/logout" class="nav-link" >Выйти</a>
+    </div> 
 {% endblock %}
