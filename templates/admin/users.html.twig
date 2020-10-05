@@ -10,12 +10,29 @@
             <div class="col-2">
                 email
             </div>
-            <div class="col-2">
+            <div class="col-5">
                 password
             </div>
             <div class="col-2">
                 role
             </div>
         </div>
+        {% for user in users %}
+            <div class="row">
+                <div class="col-1">
+                    {{user.id}}
+                </div>
+                <div class="col-2">
+                    {{user.email}}
+                </div>
+                <div class="col-5">
+                    {{user.password}}
+                </div>
+                <div class="col-2">
+                    {{user.roles | json_encode()}}
+                </div>
+                <button></button>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
