@@ -30,7 +30,7 @@ class Book
     private $text;
 
     /**
-     * @ORM\ManyToMany(targetEntity=category::class, inversedBy="books")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="books")
      */
     private $category;
 
@@ -48,7 +48,8 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private $description;
-
+    private $tempcategory;
+    
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -82,7 +83,17 @@ class Book
 
         return $this;
     }
+    public function getTempCategory(): ?string
+    {
+        return $this->tempcategory;
+    }
 
+    public function setTempCategory(string $text): self
+    {
+        $this->tempcategory = $text;
+
+        return $this;
+    }
     /**
      * @return Collection|category[]
      */

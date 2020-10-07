@@ -30,7 +30,7 @@ class Category
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Book::class, mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Book", mappedBy="category")
      */
     private $books;
 

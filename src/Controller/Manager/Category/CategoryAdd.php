@@ -32,7 +32,7 @@ class CategoryAdd extends BaseManagerController
                     $em->persist($category);
                     $em->flush();
 
-                    return $this->redirect('add');
+                    return $this->redirect('/manager/category/add');
                }
                $forRender['form'] = $form->createView();
                return $this->render('manager/Category/formAddCategory.html.twig',$forRender);
