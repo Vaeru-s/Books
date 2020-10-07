@@ -42,7 +42,7 @@ class ChangeUserType extends AbstractType
                 array(
                     'invalid_message' => 'Пароли не совпадают',)
                     )
-            ->add('add', SubmitType::class,array(
+            ->add('change', SubmitType::class,array(
                 'label' => 'Изменить пользователя',
             )) ;
             $builder->get('roles')

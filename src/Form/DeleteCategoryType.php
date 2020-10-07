@@ -2,30 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\Users;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\CallbackTransformer;
-class DeleteUserType extends AbstractType
+class DeleteCategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, array(
-                'label' => 'Введите email пользователя',
+            ->add('name', TextType::class, array(
+                'label' => 'Введите название категории',
             ))
             ->add('delete', SubmitType::class,array(
-                'label' => 'Удалить пользователя',
+                'label' => 'Удалить категорию',
             ));
     }
     
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Users::class,
+            'data_class' => Category::class,
         ]);
     }
 }

@@ -1,0 +1,10 @@
+ {% extends '/base.html.twig' %}
+ {% block body %}
+     <div class="navbar navbar-expand-md sticky-top bg-dark">
+        <a href="/manager" class="nav-link nav-item" >Главная</a>
+        <a href="/manager/category/list" class="nav-link nav-item" >Список категорий</a>
+        <a href="/manager/category/add" class="nav-link nav-item" >Добавить категорию</a>
+        <a href="/manager/category/change" class="nav-link nav-item" >Изменить категорию</a>
+        <a href="/manager/category/delete" class="nav-link nav-item" >Удалить категорию</a>
+    </div> 
+{% endblock %}
