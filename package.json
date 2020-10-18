@@ -2,9 +2,13 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0.30.2",
         "bootstrap": "^4.5.2",
-        "core-js": "^3.0.0",
+        "core-js": "^3.6.5",
+        "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
         "regenerator-runtime": "^0.13.2",
+        "vue": "^2.5",
+        "vue-loader": "^15",
+        "vue-template-compiler": "^2.6.12",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -16,6 +20,6 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "jquery": "^3.5.1"
+        "popper": "^1.0.1"
     }
 }
