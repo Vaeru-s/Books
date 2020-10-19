@@ -1,0 +1,34 @@
+{% extends 'admin/baseadmin.html.twig' %}
+{% block body %}
+    {{ parent() }}
+
+    <div class="container-fluid border-black bg-center">
+        {{ form_start(form) }}
+
+            <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+            </div>
+
+            <div class="row">
+                {{ form_widget(form.id, {'value' : user.id  }) }}
+            </div>
+            <div class="row">
+                {{ form_widget(form.email, {'value' :  user.email }) }}
+            </div>
+            <div class="row">
+                {{ form_widget(form.roles, {'choices' :  user.roles  }) }}
+            </div>
+            <div class="row">
+               Для сохранения пароля оставьте данные поля пустыми
+            </div>
+            <div class="row">
+                {{ form_widget(form.plainPassword) }}
+            </div>
+            <div class="row">
+                {{ form_widget(form.change) }}
+            </div>
+
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

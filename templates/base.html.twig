@@ -10,20 +10,8 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
-                <script src="/build/app.js"></script>
-                <script src="/build/runtime.js"></script>
-              
-    <script>
-        $('#description a').click(function(e){
-            e.preventDefault();
-            $(this).tab('show');
-        });
-        $('#characteristics a').click(function(e){
-            e.preventDefault();
-            $(this).tab('show');
-        });
-    </script>
-       
+                {{ encore_entry_script_tags('app') }}
+                <script src="/build/runtime.js"></script> 
         {% endblock %}
         
     </body>

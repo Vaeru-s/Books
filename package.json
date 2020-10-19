@@ -3,6 +3,7 @@
         "@symfony/webpack-encore": "^0.30.2",
         "bootstrap": "^4.5.2",
         "core-js": "^3.6.5",
+        "file-loader": "^6.1.1",
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
         "regenerator-runtime": "^0.13.2",

@@ -2,5 +2,8 @@
   "build/app.css": "/build/app.css",
   "build/app.js": "/build/app.js",
   "build/runtime.js": "/build/runtime.js",
-  "build/vendors~app.js": "/build/vendors~app.js"
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/images/pencil.png": "/build/images/pencil.36bd7008.png",
+  "build/images/plus.png": "/build/images/plus.48fa51f5.png",
+  "build/images/trashbin.png": "/build/images/trashbin.0edaa42c.png"
 }

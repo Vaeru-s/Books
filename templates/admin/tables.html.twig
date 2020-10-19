@@ -3,16 +3,65 @@
     {{ parent() }}
 
     <ul class="nav nav-tabs">
+    {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item"> 
-            <a class="nav-link active" data-toggle="tab" href="#description">Описание</a>
+            <a class="nav-link active" data-toggle="tab" href="#users">Пользователи</a>
+        </li>
+    {% endif %}
+    {% if is_granted('ROLE_MANAGER') %}
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#category">Категории</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#characteristics">Характеристики</a>
+            <a class="nav-link" data-toggle="tab" href="#books">Книги</a>
         </li>
+    {% endif %}
     </ul>
     <div class="tab-content">
-    <div class="tab-pane fade show active" id="description">.2.</div>
-    <div class="tab-pane fade" id="characteristics">..3.</div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="tab-pane fade show active" id="users">
+            <div>
+                <a class="plusIcon" href="addUser">
+                    <img src="{{ asset('build/images/plus.png') }}"  width="32" height="32" alt="Add" />
+                </a>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Пароль</th>
+                        <th scope="col">Роли</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.Roles | json_encode() }}</td>
+                        <td>
+                            <a href="{{ path('delete_user', {'id': user.id }) }}">
+                                <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('change_user', {'id': user.id }) }}">
+                                <img src="{{ asset('build/images/pencil.png') }}"  width="32" height="32" alt="Change">
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %} 
+            </table>
+        </div>
+        {% endif %}
+      
+        <div class="tab-pane fade" id="category">..3.</div>
+        <div class="tab-pane fade" id="books">..3.</div>
 </div>    
+    
        
 {% endblock %}

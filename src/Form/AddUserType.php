@@ -21,15 +21,17 @@ class AddUserType extends AbstractType
                 'label' => 'Введите email',
             ))
             ->add('roles', ChoiceType::class, array(
+                'label' => 'Введите роль',
+                'multiple' => true,  
+                'expanded' => true,
                 'choices'=> array(
                     'Admin' => 'ROLE_ADMIN',
                     'Manager' => 'ROLE_MANAGER',
-                    'User' => 'ROLE_USER',
-                )        
-            ),array(
-                'label' => 'Введите роль',
-                'multiple' => false
-            ))
+                    
+                )             
+            ),
+                
+            )
             ->add('plainPassword', RepeatedType::class,array(
                 'type' => PasswordType::class,
                 'first_options' => array(
@@ -45,17 +47,7 @@ class AddUserType extends AbstractType
             ->add('add', SubmitType::class,array(
                 'label' => 'Добавить пользователя',
             )) ;
-            $builder->get('roles')
-    ->addModelTransformer(new CallbackTransformer(
-        function ($rolesArray) {
-             // transform the array to a string
-             return count($rolesArray)? $rolesArray[0]: null;
-        },
-        function ($rolesString) {
-             // transform the string back to an array
-             return [$rolesString];
-        }
-));
+           
     }
     
     public function configureOptions(OptionsResolver $resolver)

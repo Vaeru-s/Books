@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminMain extends BaseAdminController
+class AdminIndex extends BaseAdminController
 { 
      /**
        * @Route("/admin", name="admin")
