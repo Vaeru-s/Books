@@ -26,7 +26,7 @@ class AddUserType extends AbstractType
                 'expanded' => true,
                 'choices'=> array(
                     'Admin' => 'ROLE_ADMIN',
-                    'Manager' => 'ROLE_MANAGER',
+                    'Manager' => 'ROLE_MANAGER'
                     
                 )             
             ),

@@ -31,7 +31,6 @@ class AdminAddUser extends BaseAdminController
                if ($form->isSubmitted() && $form->isValid()) { 
                     $password = $passwordEncoder -> encodePassword($user,$user -> getPlainPassword());
                     $user -> setPassword($password);
-                    $cUser -> setRoles($user->getRoles());
                     $em->persist($user);
                     $em->flush();
                     
