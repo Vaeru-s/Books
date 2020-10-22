@@ -1,0 +1,39 @@
+{% extends 'admin/baseadmin.html.twig' %}
+{% block body %}
+    {{ parent() }}
+     {{ form_start(form) }}
+    <div class="container-fluid border-black bg-center">
+            <div class="my-custom-class-for-errors">
+                    {{ form_errors(form) }}
+            </div>
+
+            <div class="row">
+                Имя книги</br>
+                {{ form_widget(form.name, {'value' :  book.name }) }}
+            </div>
+            <div class="row">
+                Текст книги </br>
+                {{ form_widget(form.text, {'value' :  book.text}) }}
+            </div>
+            <div class="row">
+                Категория книги </br>
+                {{ form_widget(form.category, {'value' :  book.category }) }}
+            </div>
+            <div class="row">
+                Год издания книги </br>
+                {{ form_widget(form.year, {'value' :  book.year}) }}
+            </div>
+            <div class="row">
+                Автор </br>
+                {{ form_widget(form.author, {'value' :  book.author}) }}
+            </div>
+            <div class="row">
+                Описание </br>
+                {{ form_widget(form.description, {'value' :  book.description}) }}
+            </div>
+             <div class="row">
+                {{ form_widget(form.change) }}
+            </div>
+   </div>
+        {{ form_end(form) }}
+{% endblock %}

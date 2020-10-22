@@ -10,13 +10,16 @@
             </div>
 
             <div class="row">
+                ID пользователя </br>
                 {{ form_widget(form.id, {'value' : user.id  }) }}
             </div>
             <div class="row">
+             Email пользователя </br>
                 {{ form_widget(form.email, {'value' :  user.email }) }}
             </div>
             <div class="row">
-                {{ form_widget(form.roles, {'choices' :  user.roles  }) }}
+                Роли </br>
+                {{ form_widget(form.roles) }}
             </div>
             <div class="row">
                Для сохранения пароля оставьте данные поля пустыми

@@ -24,9 +24,17 @@ class AdminChangeUser extends BaseAdminController
                $forRender['title'] = '[a] Изменить пользователя';
                $user = new Users();
                $cUser = new Users();
-               $form = $this -> createForm(ChangeUserType::class, $user);
+
                $em  = $this -> getDoctrine()->getManager();
                $cUser = $em -> getRepository(Users::class)->findOneBy(array('id' => $id));
+
+               $roles = $cUser->getRoles();
+               $roles = \array_diff($roles, ["ROLE_USER"]);
+               sort($roles);
+
+               $form = $this -> createForm(ChangeUserType::class, $user,array('roles' => $roles));
+
+              
                $forRender['user'] = $cUser;
                $form->handleRequest($request);
                if ($form->isSubmitted() && $form->isValid()) {     
@@ -47,8 +55,11 @@ class AdminChangeUser extends BaseAdminController
                               $password = $passwordEncoder -> encodePassword($user, $user -> getPlainPassword());
                               $cUser -> setPassword($password);
                          }
+                         $rolus = \array_diff($user->getRoles(), ["0","1","2","ROLE_USER"]);
+                         ksort($rolus);
+                         sort($rolus);
+                         $cUser -> setRoles($rolus);
                          $em->persist($cUser);
-                         $cUser -> setRoles($user->getRoles());
                          $em->flush();
                          return $this->redirect('/admin/tables');
                     }

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class ChangeBookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -25,8 +26,13 @@ class ChangeBookType extends AbstractType
             ->add('text', TextType::class, array(
                 'label' => 'Введите текст книги',
             )) 
-            ->add('tempcategory', TextType::class, array(
+            ->add('category', EntityType::class, array(
                 'label' => 'Введите категорию книги',
+                'data' => $options['category'],
+                'class' => Category::class,
+                'multiple' => true,
+                'expanded' => true
+               ,
             )) 
             ->add('year', IntegerType::class, array(
                 'label' => 'Введите год написания книги',
@@ -34,7 +40,7 @@ class ChangeBookType extends AbstractType
             ->add('author', TextType::class, array(
                 'label' => 'Введите автора книги',
             )) 
-            ->add('add', SubmitType::class,array(
+            ->add('change', SubmitType::class,array(
                 'label' => 'Изменить книгу',
             )) ;
     }
@@ -43,6 +49,7 @@ class ChangeBookType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Book::class,
+            'category' => array()
         ]);
     }
 }

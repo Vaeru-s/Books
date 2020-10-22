@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\CallbackTransformer;
 class AddBookType extends AbstractType
 {
@@ -25,7 +26,10 @@ class AddBookType extends AbstractType
             ->add('text', TextType::class, array(
                 'label' => 'Введите текст книги',
             )) 
-            ->add('tempcategory', TextType::class, array(
+            ->add('category', EntityType::class, array(
+                'class' => Category::class,
+                'multiple' => true,
+                'expanded' => true,
                 'label' => 'Введите категорию книги',
             )) 
             ->add('year', IntegerType::class, array(

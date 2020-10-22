@@ -16,7 +16,7 @@ use Symfony\Component\Form\CallbackTransformer;
 class ChangeUserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {   $rol = $options['roles'];
         $builder
             ->add('id',IntegerType::class, array(
                 'label' => 'Введите id'
@@ -26,8 +26,9 @@ class ChangeUserType extends AbstractType
             ))
             ->add('roles', ChoiceType::class, array(
                 'label' => 'Введите роль',
-                'multiple' => true,  
+                'multiple' => true,   
                 'expanded' => true,
+                'data' => $rol,
                 'choices'=> array(
                     'Admin' => 'ROLE_ADMIN',
                     'Manager' => 'ROLE_MANAGER',
@@ -59,6 +60,7 @@ class ChangeUserType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Users::class,
+            'roles' => array()
         ]);
     }
 }

@@ -48,7 +48,7 @@ class Book
      * @ORM\Column(type="string", length=255)
      */
     private $description;
-    private $tempcategory;
+
     
     public function __construct()
     {
@@ -101,9 +101,16 @@ class Book
     {
         return $this->category;
     }
+    
+    public function clearCategory()
+    {
+        $this->category->clear();
+    }
 
     public function addCategory(category $category): self
     {
+        
+
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
         }
@@ -155,4 +162,5 @@ class Book
 
         return $this;
     }
+    
 }

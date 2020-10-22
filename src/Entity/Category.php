@@ -30,7 +30,7 @@ class Category
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Book", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Book", mappedBy="category",cascade={"all"})
      */
     private $books;
 
@@ -94,5 +94,9 @@ class Category
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this-> getName();
     }
 }
