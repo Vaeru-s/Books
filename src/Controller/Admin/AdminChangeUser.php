@@ -58,6 +58,7 @@ class AdminChangeUser extends BaseAdminController
                          $rolus = \array_diff($user->getRoles(), ["0","1","2","ROLE_USER"]);
                          ksort($rolus);
                          sort($rolus);
+                         $cUser -> setEmail($user -> getEmail());
                          $cUser -> setRoles($rolus);
                          $em->persist($cUser);
                          $em->flush();
