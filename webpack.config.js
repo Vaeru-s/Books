@@ -13,7 +13,7 @@ Encore
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
-
+    
     /*
      * ENTRY CONFIG
      *
@@ -29,7 +29,7 @@ Encore
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
-
+    
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
@@ -74,7 +74,7 @@ Encore
                from: './assets/images',
                to: 'images/[path][name].[hash:8].[ext]' 
             })
-  
+    .enableVueLoader()
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -7,10 +7,13 @@
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
         "regenerator-runtime": "^0.13.2",
-        "vue": "^2.5",
-        "vue-loader": "^15",
+        "vue": "^2.6.12",
+        "vue-loader": "^15.9.6",
         "vue-template-compiler": "^2.6.12",
         "webpack-notifier": "^1.6.0"
+    },
+    "browser": {
+        "vue": "vue/dist/vue.common"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -21,6 +24,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "popper": "^1.0.1"
+        "@popperjs/core": "^2.6.0",
+        "popper": "^1.0.1",
+        "vertigolabs/doctrine-full-text-postgres": "1.1.1"
     }
 }

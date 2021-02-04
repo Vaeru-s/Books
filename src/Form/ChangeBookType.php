@@ -40,6 +40,9 @@ class ChangeBookType extends AbstractType
             ->add('author', TextType::class, array(
                 'label' => 'Введите автора книги',
             )) 
+            ->add('url', TextType::class, array(
+                'label' => 'Введите ссылку на изображение',
+            )) 
             ->add('change', SubmitType::class,array(
                 'label' => 'Изменить книгу',
             )) ;
@@ -49,7 +52,8 @@ class ChangeBookType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Book::class,
-            'category' => array()
+            'category' => array(),
+            'url' => null
         ]);
     }
 }

@@ -2,3 +2,17 @@
     float:right;
     margin-right: 5px;
 }
+.categoryMenu{
+    width: 29%;
+    margin: 5px;
+}
+.mainDiv{
+    width: 70%;
+    float:right;
+}
+
+body {
+
+    height: 100%;
+  }
+  .h-92{height:92%!important}

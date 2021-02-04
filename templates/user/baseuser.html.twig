@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  {% block navbar %}
+    <div class ="navbar navbar-dark bg-dark justify-content-end vh-25">
+      {% if is_granted('ROLE_MANAGER') or is_granted('ROLE_ADMIN')%}
+          <a href = "/admin" class="btn btn-light mr-md-3" >Панель управления</a>
+          <a href = "/logout" class="btn btn-light btn-sm">Выйти</a>
+      {% else %}
+          <a href = "/login" class="btn btn-light mr-md-3">Авторизация</a>
+      {% endif %}
+    </div>
+  {% endblock %}
+  {% block sidebar %}
+        {{ form_start(form) }}
+          <div class="mt-md-2 ml-md-2 mr-md-2 row">
+        
+          {{ form_widget(form.text) }}
+          {{ form_widget(form.search) }}
+          </div>
+        {{ form_end(form) }}
+          <a href = "/" class="btn btn-dark mt-md-1 mb-md-1 container" >Без выбора жанра</a>
+            {% for category in categoryArray %}
+              <a class="btn btn-dark mt-md-1 mb-md-1 container" href="{{ path('viewCategory', {'id': category.id })}}"> {{category.name}}</a> 
+            {% endfor %}
+         
+  {% endblock %}
+
+{% endblock %}
+{% block addJs %}
+    <script>
+      var main = new Vue({
+        el: "#main",
+        data: {
+             countBooksOnPage: 5
+        },
+       delimiters: ['[[', ']]'],
+        methods: {
+          setCountOnPage: function (number) {  
+            this.countBooksOnPage  = number,
+            bot.recalculatePmax()
+          }
+      }});
+ 
+  </script>
+{% endblock %}

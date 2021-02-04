@@ -49,6 +49,11 @@ class Book
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $url;
+    
     
     public function __construct()
     {
@@ -83,17 +88,7 @@ class Book
 
         return $this;
     }
-    public function getTempCategory(): ?string
-    {
-        return $this->tempcategory;
-    }
 
-    public function setTempCategory(string $text): self
-    {
-        $this->tempcategory = $text;
-
-        return $this;
-    }
     /**
      * @return Collection|category[]
      */
@@ -109,12 +104,9 @@ class Book
 
     public function addCategory(category $category): self
     {
-        
-
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-        }
-
+            if (!$this->category->contains($category)) {
+                $this->category[] = $category;
+            }
         return $this;
     }
 
@@ -162,5 +154,20 @@ class Book
 
         return $this;
     }
-    
+    public function __toString()
+    {
+        return $this-> getName();
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
+    }
 }

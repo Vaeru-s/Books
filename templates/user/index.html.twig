@@ -1,14 +1,107 @@
-{% extends 'base.html.twig' %}
+{% extends 'user/baseuser.html.twig' %}
+{% set maxP = ((bookArray|length) / 5)|round(0, 'ceil') %}
 {% block body %}
-
-    <div class="container-fluid nav-bar">
-        <div class="col-12 col-lg-6 col-md-6 justify-content-center">
-            <h1 class="display-4 text-center">
-                 {{ title }}
-
-                 <a href="/admin">Админ панель</a>
-            </h1>
-        </div>  
+  {% block navbar %}
+    {{ parent() }}
+  {% endblock %}
+  <div class="vh-100 ml-md-2 mr-md-2 row">
+    {% block sidebar %}
+    <div class="d-flex align-items-start flex-column flex-grow h-92 col-3 m-md-2 border border-dark overflow-auto">
+      {{ parent() }}
+       <div class="ml-md-2 mt-auto row align-self-center">
+            Отображать на странице
+            <div id="main" class="filter-dropdown">
+              <button class=" ml-md-2 mr-md-2 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data- 
+   target="#pgs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                [[ countBooksOnPage ]]
+              </button>
+              <div class="dropdown-menu" id="pgs" aria-labelledby="dropdownMenuButton">
+                <button v-on:click="setCountOnPage(5)" class="btn btn-secondary dropdown-item" >5</button>
+                <button v-on:click="setCountOnPage(10)" class="btn btn-secondary dropdown-item" >10</button>
+                <button v-on:click="setCountOnPage(50)" class="btn btn-secondary dropdown-item" >50</button>
+                <button v-on:click="setCountOnPage(100)" class="btn btn-secondary dropdown-item" >100</button>
+              </div>
+          </div> книг
+          </div>
     </div>
-
+    {% endblock %}
+    {% block main %}
+    <div  class="d-flex align-items-start flex-column flex-grow h-92 col m-md-2 border border-dark overflow-auto ">
+    {% if bookArray is empty%}
+     <div class="row m-md-2">
+      <h2>Результатов не найдено!</h2>
+     </div>
+     {% else %}
+        <div id="content" >
+          <ul>
+            <template v-for="book in bookArray" class="row ">
+            <li class="row">
+                <img :src="[[ book.url ]]" style="width:126px;height: 126px" class="m-md-1">
+                <div class="ml-md-5">      
+                  <a :href="'/Book/' + [[ book.id ]]" class="btn btn-link mt-md-1 mb-md-1 row"> [[book.name]] </a>
+                  <div class="row">Жанры:   <p v-for="category in book.category"> [[ category.name ]] </p></div>
+                  <div id="" class="row"> Автор: [[ book.Author ]] </div>
+                  <div id="" class="row">[[ book.description ]] </div>
+             
+                </div>
+            </li>
+            </template>
+           </ul>
+        </div>
+    {% endif %}
+    
+    <div id="pgstatus" class="ml-md-2 mb-md-2 align-self-center mt-auto row"><button v-on:click="pgd" class="btn btn-secondary ml-md-2 mr-md-2"><<</button><div class="align-self-center">Страница [[ currentPage ]] из [[ pageMax ]] </div><button v-on:click="pgp" class="btn btn-secondary ml-md-2 mr-md-2" >>></button></div>  
+       
+    </div> 
+  </div>
+  {% endblock %}
+{% endblock %}
+{% block addJs %}
+    {{ parent() }}
+     <script>
+        $(document).ready(function() {
+            $(".dropdown-toggle").dropdown();
+        });
+      </script>
+      <script>
+      var bot = new Vue({
+        delimiters: ['[[', ']]'],
+        el: "#pgstatus",
+        data: {
+             currentPage: 1,
+             pageMax: {{ maxP }},
+             countBooks: {{ bookArray|length }},
+        },
+         methods: {
+          pgd: function (event) {
+            if (this.currentPage > 1) {
+              this.currentPage -=1,
+              this.updateContent() }     
+          },
+          pgp: function (event) {
+                if (this.currentPage < this.pageMax) {
+                  this.currentPage +=1,
+                  this.updateContent() }
+          },
+          updateContent()
+          {
+            content.bookArray = JSON.parse( '{{ bookArrayJson|raw }}' ).slice((this.currentPage - 1) * main.countBooksOnPage, this.currentPage * main.countBooksOnPage),
+            content.$forceUpdate()
+          },
+          recalculatePmax: function() {
+              this.currentPage = 1,
+              this.pageMax = Math.ceil((this.countBooks / main.countBooksOnPage)),
+              this.updateContent()
+          }
+         } 
+    });
+     var content = new Vue({
+        delimiters: ['[[', ']]'],
+        el: "#content",
+        data: {
+          bookArray: JSON.parse( '{{ bookArrayJson|raw }}' ).slice((bot.currentPage - 1) * main.countBooksOnPage, bot.currentPage * main.countBooksOnPage),
+        },
+        });
+      
+      </script>
 {% endblock %}

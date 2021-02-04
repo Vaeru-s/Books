@@ -115,6 +115,7 @@
                         <th scope="col">Год</th>
                         <th scope="col">Автор</th>
                         <th scope="col">Описание</th>
+                        <th scope="col">Ссылка</th>
                         <th scope="col"> </th>
                         <th scope="col"> </th>
                     </tr>
@@ -134,6 +135,7 @@
                         <td>{{ book.year }}</td>
                         <td>{{ book.Author }}</td>
                         <td>{{ book.description }}</td>
+                        <td>{{ book.url|escape }}</td>
                         <td>
                             <a href="{{ path('delete_book', {'id': book.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">

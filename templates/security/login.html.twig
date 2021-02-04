@@ -3,35 +3,32 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
+<form method="post" class="d-flex flex-column align-items-center position-fixed-center h-100" style="width: 200px;">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control-sm" required autofocus>
+    <label for="inputPassword">Пароль</label>
+    <input type="password" name="password" id="inputPassword" class="form-control-sm" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input type="checkbox" name="_remember_me"> Запомнить
             </label>
         </div>
-    #}
+        <a href="reset-password" class="btn btn-link mt-md-1 mb-md-1">Забыли пароль?</a>
+     
+
 
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        Войти
     </button>
 </form>
 {% endblock %}

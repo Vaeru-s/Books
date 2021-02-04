@@ -43,6 +43,7 @@ class BookChange extends BaseAdminController
                          $cBook-> setText($book->getText());
                          $cBook-> setYear($book->getYear());
                          $cBook-> setAuthor($book->getAuthor());
+                         $cBook-> setUrl(htmlspecialchars($book->getUrl()));
                          foreach($book->getCategory() as $oneCategory)
                          {
                               $cBook-> addCategory($oneCategory);

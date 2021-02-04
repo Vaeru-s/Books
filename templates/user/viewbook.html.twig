@@ -1,0 +1,36 @@
+{% extends 'user/baseuser.html.twig' %}
+{% block body %}
+  {% block navbar %}
+    {{ parent() }}
+  {% endblock %}
+  <div class="vh-100 ml-md-2 mr-md-2 row">
+    {% block sidebar %}
+    <div class="d-flex align-items-start flex-column flex-grow h-92 col-3 m-md-2 border border-dark overflow-auto">
+      {{ parent() }}
+    </div>
+    {% endblock %}
+    {% block main %}
+    <div id="main" class="d-flex align-items-start flex-column flex-grow h-92 col m-md-2 border border-dark overflow-auto ">
+    {% if book is empty%}
+     <div class="row m-md-2">
+      <h2>Книга не найдена!</h2>
+     </div>
+     {% else %}
+          <div class="row">
+              <img src="{{ book.url }}" style="width:256px;height: 256px" class="m-md-1">
+              <div class="ml-md-5">      
+                <h1 class="mt-md-1 mb-md-1 row">{{ book.name }}</h1>
+                <div class="row">Жанры:   {% for cat in book.category %} {{ cat.name }} {% endfor %}</div>
+                <div id="" class="row">Год издания: {{ book.year }} г. </div>
+                <div id="" class="row"> Автор: {{ book.Author }} </div>
+              </div>        
+          </div>
+         <div class="border w-100 border-dark d-flex flex-grow-1 row ml-md-2 mr-md-2 mt-md-2 mb-md-2 "> <p class=" ml-md-2 mr-md-2 mt-md-2 mb-md-2 text-justify"> {{ book.text }} </p></div>
+      {% endif %}
+    </div> 
+  </div>
+  {% endblock %}
+{% endblock %}
+{% block addJs %}
+    {{ parent() }}
+{% endblock %}

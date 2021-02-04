@@ -38,6 +38,9 @@ class AddBookType extends AbstractType
             ->add('author', TextType::class, array(
                 'label' => 'Введите автора книги',
             )) 
+            ->add('url', TextType::class, array(
+                'label' => 'Введите ссылку на изображение',
+            )) 
             ->add('add', SubmitType::class,array(
                 'label' => 'Добавить книгу',
             )) ;

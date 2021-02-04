@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Письмо с ссылкой отправлено{% endblock %}
+
+{% block body %}
+    <p>
+        Письмо с ссылкой на сброс пароля отправлено. Для сброса пароля необходимо перейти по ссылке.
+        Срок жизни ссылки:  {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p>Если вы не получили письмо, проверьте папку "Спам" или <a href="{{ path('app_forgot_password_request') }}">попробуйте снова</a>.</p>
+{% endblock %}
