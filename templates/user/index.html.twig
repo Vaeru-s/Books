@@ -35,7 +35,7 @@
         <div id="content" >
           <ul>
             <template v-for="book in bookArray" class="row ">
-            <li class="row">
+            <div class="row">
                 <img :src="[[ book.url ]]" style="width:126px;height: 126px" class="m-md-1">
                 <div class="ml-md-5">      
                   <a :href="'/Book/' + [[ book.id ]]" class="btn btn-link ml-md-2 mr-md-2 mt-md-2 mb-md-2 row text-justify"> [[book.name]] </a>
@@ -44,7 +44,7 @@
                   <div id="" class="row ml-md-2 mr-md-2 mt-md-2 mb-md-2 text-justify">[[ book.description ]] </div>
              
                 </div>
-            </li>
+            </div>
             </template>
            </ul>
         </div>
