@@ -39,9 +39,9 @@
                 <img :src="[[ book.url ]]" style="width:126px;height: 126px" class="m-md-1">
                 <div class="ml-md-5">      
                   <a :href="'/Book/' + [[ book.id ]]" class="btn btn-link ml-md-2 mr-md-2 mt-md-2 mb-md-2 row text-justify"> [[book.name]] </a>
-                  <div class="row">Жанры:   <p v-for="category in book.category"> [[ category.name ]] </p></div>
-                  <div id="" class="row"> Автор: [[ book.Author ]] </div>
-                  <div id="" class="row ml-md-2 mr-md-2 mt-md-2 mb-md-2 text-justify">[[ book.description ]] </div>
+                  <div class="">Жанры:   <p v-for="category in book.category"> [[ category.name ]] </p></div>
+                  <div id="" class=""> Автор: [[ book.Author ]] </div>
+                  <div id="" class=" ml-md-2 mr-md-2 mt-md-2 mb-md-2 text-justify">[[ book.description ]] </div>
              
                 </div>
             </div>
