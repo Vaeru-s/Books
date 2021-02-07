@@ -53,8 +53,8 @@ class Book
      */
     private $url;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Users")
+   /**
+     * @ORM\ManyToOne(targetEntity="Users")
      */
     private $creator;
     
