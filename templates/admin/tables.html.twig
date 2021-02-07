@@ -32,6 +32,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Пароль</th>
                         <th scope="col">Роли</th>
+                        <th scope="col"> Пользователя добавил: </th>
                         <th scope="col"> </th>
                         <th scope="col"> </th>
                     </tr>
@@ -43,6 +44,7 @@
                         <td>{{ user.email }}</td>
                         <td>{{ user.password }}</td>
                         <td>{{ user.Roles | json_encode() }}</td>
+                        <td>{{ user.creator }}</td>
                         <td>
                             <a href="{{ path('delete_user', {'id': user.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">
@@ -72,6 +74,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Название категории</th>
                         <th scope="col">Описание</th>
+                        <th scope="col">Категорию добавил: </th>
                         <th scope="col"> </th>
                         <th scope="col"> </th>
                     </tr>
@@ -82,6 +85,7 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.Description }}</td>
+                        <td>{{ category.creator }}</td>
                         <td>
                             <a href="{{ path('delete_category', {'id': category.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">
@@ -116,6 +120,7 @@
                         <th scope="col">Автор</th>
                         <th scope="col">Описание</th>
                         <th scope="col">Ссылка</th>
+                        <th scope="col">Книгу добавил: </th>
                         <th scope="col"> </th>
                         <th scope="col"> </th>
                     </tr>
@@ -136,6 +141,7 @@
                         <td>{{ book.Author }}</td>
                         <td>{{ book.description }}</td>
                         <td>{{ book.url|escape }}</td>
+                        <td>{{ book.creator}}</td>
                         <td>
                             <a href="{{ path('delete_book', {'id': book.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">

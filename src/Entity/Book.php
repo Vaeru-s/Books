@@ -53,6 +53,11 @@ class Book
      * @ORM\Column(type="string", length=5000, nullable=true)
      */
     private $url;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $creator;
     
     
     public function __construct()
@@ -167,6 +172,18 @@ class Book
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getCreator(): ?string
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?string $creator): self
+    {
+        $this->creator = $creator;
 
         return $this;
     }

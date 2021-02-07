@@ -34,6 +34,11 @@ class Category
      */
     private $books;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $creator;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -98,5 +103,17 @@ class Category
     public function __toString()
     {
         return $this-> getName();
+    }
+
+    public function getCreator(): ?string
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?string $creator): self
+    {
+        $this->creator = $creator;
+
+        return $this;
     }
 }

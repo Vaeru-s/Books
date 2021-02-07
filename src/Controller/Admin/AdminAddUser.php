@@ -29,6 +29,7 @@ class AdminAddUser extends BaseAdminController
                $form->handleRequest($request);
                
                if ($form->isSubmitted() && $form->isValid()) { 
+                    $user->setCreator(htmlspecialchars($this->getUseer()->getEmail()));
                     $password = $passwordEncoder -> encodePassword($user,$user -> getPlainPassword());
                     $user -> setPassword($password);
                     $em->persist($user);

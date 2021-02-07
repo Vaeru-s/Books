@@ -35,6 +35,11 @@ class Users implements UserInterface
     private $password;
 
     private $plainPassword;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $creator;
     public function getId(): ?int
     {
         return $this->id;
@@ -124,5 +129,17 @@ class Users implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCreator(): ?string
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?string $creator): self
+    {
+        $this->creator = $creator;
+
+        return $this;
     }
 }
