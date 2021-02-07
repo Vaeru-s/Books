@@ -45,6 +45,7 @@ class CategoryChange extends BaseAdminController
                          $em->persist($cCategory);
                          $cCategory -> setName(htmlspecialchars($category->getName()));
                          $cCategory -> setDescription(htmlspecialchars($category->getDescription()));
+                         $cCategory-> setCreator($cCategory->getCreator());
                          $em->flush();
                          return $this->redirect('/admin/tables');
                     }

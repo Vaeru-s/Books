@@ -85,7 +85,7 @@
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.Description }}</td>
-                        <td>{{ category.creator }}</td>
+                        <td>{% if category.creator is not empty %} {{ category.creator.email }} {% endif %}</td>
                         <td>
                             <a href="{{ path('delete_category', {'id': category.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">
@@ -141,7 +141,7 @@
                         <td>{{ book.Author }}</td>
                         <td>{{ book.description }}</td>
                         <td>{{ book.url|escape }}</td>
-                        <td>{{ book.creator}}</td>
+                        <td>{% if book.creator is not empty %} {{ book.creator.email}}{% endif %}</td>
                         <td>
                             <a href="{{ path('delete_book', {'id': book.id }) }}">
                                 <img src="{{ asset('build/images/trashbin.png') }}"  width="32" height="32" alt="Delete">

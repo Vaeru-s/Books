@@ -28,7 +28,7 @@ class CategoryAdd extends BaseAdminController
                $form->handleRequest($request);
                
                if ($form->isSubmitted() && $form->isValid()) { 
-                    $category->setCreator(htmlspecialchars($this->getUser()->getEmail()));
+                    $category->setCreator($this->getUser());
                     $em->persist($category);
                     $em->flush();
 

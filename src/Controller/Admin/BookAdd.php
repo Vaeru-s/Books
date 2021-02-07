@@ -31,7 +31,7 @@ class BookAdd extends BaseAdminController
                
                if ($form->isSubmitted() && $form->isValid()) { 
                     
-                    $book->setCreator(htmlspecialchars($this->getUser()->getEmail()));
+                    $book->setCreator($this->getUser());
                     $em->persist($book);
                     $em->flush();
                     return $this->redirect('/admin/tables');
